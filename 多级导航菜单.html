@@ -71,7 +71,16 @@
 
     <script>
         var oMenu = document.getElementById('menu');
-        var aMainMenu = oMenu.getElementsByClassName('main-menu');
+        var aLi = oMenu.children;
+        for(var i=0;i<aLi.length;i++) {
+            aLi.getElementsByTagName('a').onmouseover=function () {
+                aLi.getElementsByTagName('ul').style.display = 'block';
+            }
+            aLi.getElementsByTagName('a').onmouseoout=function () {
+                aLi.getElementsByTagName('ul').style.display = 'none';
+            }
+        }
+       /* var aMainMenu = oMenu.getElementsByClassName('main-menu');
         var aSubMenu = oMenu.getElementsByTagName('ul');
         for(var i=0;i<aMainMenu.length;i++)
         {
@@ -82,7 +91,7 @@
             aMainMenu[i].onmouseout=function () {
                 aSubMenu[this.index].style.display='none';
             };
-        }
+        }*/
     </script>
 </body>
 </html>
