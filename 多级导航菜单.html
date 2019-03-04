@@ -35,9 +35,9 @@
             background:#eeeeee;
             display: none;
         }
-        #menu > li:hover .sub-menu{
+ /*       #menu > li:hover .sub-menu{
             display: block;
-        }
+        }*/
     </style>
 </head>
 <body>
@@ -68,5 +68,21 @@
         </li>
     </ul>
 
+
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aMainMenu = oMenu.getElementsByClassName('main-menu');
+        var aSubMenu = oMenu.getElementsByTagName('ul');
+        for(var i=0;i<aMainMenu.length;i++)
+        {
+            aMainMenu[i].index=i;
+            aMainMenu[i].onmouseover=function () {
+                aSubMenu[this.index].style.display='block';
+            };
+            aMainMenu[i].onmouseout=function () {
+                aSubMenu[this.index].style.display='none';
+            };
+        }
+    </script>
 </body>
 </html>
