@@ -80,17 +80,20 @@
                 this.getElementsByTagName('ul')[0].style.display = 'none';
             };
         }
-       /* var aMainMenu = oMenu.getElementsByClassName('main-menu');
+       /*var aMainMenu = oMenu.getElementsByClassName('main-menu');
         var aSubMenu = oMenu.getElementsByTagName('ul');
+        var count = 0;
         for(var i=0;i<aMainMenu.length;i++)
         {
-            aMainMenu[i].index=i;
+            if(aMainMenu[i].className = 'main-menu'){
+            aMainMenu[i].index=count++;
             aMainMenu[i].onmouseover=function () {
                 aSubMenu[this.index].style.display='block';
             };
             aMainMenu[i].onmouseout=function () {
                 aSubMenu[this.index].style.display='none';
             };
+            }
         }*/
     </script>
 </body>
