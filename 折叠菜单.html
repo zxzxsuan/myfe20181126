@@ -47,7 +47,22 @@
 
     <script>
         var oMenu=document.getElementById('menu');
-        var aMainMenu=oMenu.getElementsByTagName('h3');
+        var aLi=oMenu.children;
+        for(var i=0;i<aLi.length;i++){
+
+            aLi[i].bflag=false;
+            aLi[i].onclick=function(){
+                if(this.bflag){
+                    this.getElementsByTagName('ul')[0].style.display="none";
+                }
+                else{
+                    this.getElementsByTagName('ul')[0].style.display="block";
+                }
+                this.bflag=!this.bflag;
+            };
+
+        }
+       /* var aMainMenu=oMenu.getElementsByTagName('h3');
        var aSubMenu =oMenu.getElementsByTagName('ul');
         for(var i=0;i<aMainMenu.length;i++)
         {
@@ -56,14 +71,14 @@
             aMainMenu[i].onclick=function(){
                 if(this.bflag)
                 {
-                    aSubMenu[this.index].style.display="block";
-                }
-                else{
                     aSubMenu[this.index].style.display="none";
                 }
+                else{
+                    aSubMenu[this.index].style.display="block";
+                }
                 this.bflag=!this.bflag;
-            }
-        }
+            };
+        }*/
     </script>
 </body>
 </html>
