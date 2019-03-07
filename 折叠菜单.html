@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>折叠菜单</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style: none;
+
+        }
+        a{
+            text-decoration: none;
+        }
+
+        .sub-menu{
+            display:none;
+        }
+        h3{
+            cursor: pointer;
+        }
+    </style>
+    
 </head>
 <body>
+    <ul id="menu">
+        <li>
+            <h3 class="main-menu">管理员</h3>
+            <ul class="sub-menu">
+                <li><a href="#">001</a></li>
+                <li><a href="#">002</a></li>
+                <li><a href="#">003</a></li>
+            </ul>
+        </li>
+        <li>
+            <h3 class="main-menu">用户</h3>
+            <ul class="sub-menu">
+                <li><a href="#">001</a></li>
+                <li><a href="#">002</a></li>
+                <li><a href="#">003</a></li>
+            </ul>
+        </li>
+    </ul>
 
+    <script>
+        var oMenu=document.getElementById('menu');
+        var aMainMenu=oMenu.getElementsByTagName('h3');
+       var aSubMenu =oMenu.getElementsByTagName('ul');
+        for(var i=0;i<aMainMenu.length;i++)
+        {
+            aMainMenu[i].index=i;
+            aMainMenu[i].bflag=false;
+            aMainMenu[i].onclick=function(){
+                if(this.bflag)
+                {
+                    aSubMenu[this.index].style.display="block";
+                }
+                else{
+                    aSubMenu[this.index].style.display="none";
+                }
+                this.bflag=!this.bflag;
+            }
+        }
+    </script>
 </body>
 </html>
