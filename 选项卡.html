@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            overflow: hidden;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            margin:50px auto;
+        }
+        #menu li{
+            width:100px;
+            height: 30px;
+            background: #eeeeee;
+            float: left;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 30px;
+
+        }
+        #content{
+            background: #cccccc;
+            height: 170px;
+            border:1px solid;
+        }
+        #menu .selected{
+            background:#000;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="menu">
+            <li class="selected">html</li>
+            <li>css</li>
+            <li>js</li>
+        </ul>
+        <div id="content">
+            11111
+        </div>
+    </div>
+
+
+    <script>
+        var oMenu=document.getElementById('menu');
+        var aLi=oMenu.getElementsByTagName('li');
+        var oContent = document.getElementById('content');
+        var data=[111,222,333];
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+                for(var i=0;i<aLi.length;i++){
+                    aLi[i].className='';
+                }
+                this.className='selected';
+                oContent.innerHTML=data[this.index];
+            };
+
+        }
+        /*var last=0;//最后点击的li的索引
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].index=i;
+            aLi[i].onclick=function(){
+              aLi[last].className="";
+                this.className='selected';
+                last=this.index;
+            };
+        }*/
+    </script>
+</body>
+</html>
