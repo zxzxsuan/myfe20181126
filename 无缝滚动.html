@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图的无缝滚动</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        ul,ol{
+            list-style:none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 375px;
+            height: 200px;
+            position: relative;
+            margin: 100px auto;
+            border:1px solid;
+            overflow: hidden;
+        }
+        #box{
+            width: 520px;
+            height: 120px;
+            position: absolute;
+        }
+        #box li{
+            background: #000;
+            color: #ffffff;
+            width: 120px;
+            height: 120px;
+            float: left;
+            margin-right: 5px;
+            text-align:center;
+            line-height:120px;
+            font-size:30px;
+        }
+        #arrows{
+            width: 130px;
+            height: 30px;
+            /*margin:150px 125px;*/
+            position: absolute;
+            left:50%;
+            margin-left :-65px;
+            bottom:25px;
+        }
+        #arrows span{
+            display: block;
+            width: 60px;
+            height: 30px;
+            background: #cccccc;
+            float: left;
+            margin-right: 5px;
+            line-height: 30px;
+            text-align:center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="box">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="arrows">
+            <span id="prev">&lt;&lt;向左</span>
+            <span id="next">向右&gt;&gt;</span>
+        </div>
+    </div>
+
+
+    <script>
+        var oBox = document.getElementById('box');
+        var oPrev = document.getElementById('prev');
+        var oNext = document.getElementById('next');
+        var speed = 20;
+        oBox.innerHTML += oBox.innerHTML;
+        oBox.style.width = oBox.offsetWidth*2 + "px";
+        setInterval(function(){
+
+            oBox.style.left = oBox.offsetLeft - speed + "px";
+            if(oBox.offsetLeft <= - oBox.offsetWidth/2 ){
+                oBox.style.left = 0;
+            }
+            if(oBox.offsetLeft > 0){
+                oBox.style.left = -oBox.offsetWidth/2 +"px";
+            }
+        },100);
+        oPrev.onmouseover = oNext.onmouseover = function(){
+            if(this == oPrev){
+                speed = 20;
+            }
+            else{
+                speed = -20;
+            }
+        };
+    </script>
+</body>
+</html>
