@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出</title>
+    <style>
+        #asd{
+            background: red;
+            width: 200px;
+            height: 100px;
+            position:absolute;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+        <div id="asd">1</div>
+</body>
+<script src="jslib.js"></script>
+<script>
+    oDiv = document.getElementById('asd');
+    animate(oDiv,{left:100});
+</script>
+</html>
