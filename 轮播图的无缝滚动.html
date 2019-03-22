@@ -24,6 +24,7 @@
             position: relative;
             margin:50px auto;
             overflow:hidden;
+            cursor:pointer;
         }
         #content{
             /*//width: 2000px;*/
@@ -96,6 +97,7 @@
 
 <script src="jslib.js"></script>
 <script>
+    var oContainer = document.getElementById('container');
     var oContent = document.getElementById('content');
     var oTab = document.getElementById('tab');
     var aLi = oTab.getElementsByTagName('li');
@@ -116,8 +118,8 @@
         if(this == oPrev){
             iNow--;
             if(iNow == -1){
-                iNow = aImg.length-2;
-                oContent.style.left = - iImgWidth*(aImg.length-1);
+                iNow = aImg.length - 2;
+                oContent.style.left = - iImgWidth * (aImg.length-1) + 'px';
             }
             changeImg(iNow);
         }else{
@@ -129,13 +131,25 @@
             changeImg(iNow);
         }
     };
+    var timer;
+    function run(){
+        timer = setInterval(oNext.onclick,1000);
+    }
+    run();
+    oContainer.onmouseover = function(){
+        clearInterval(timer);
+    };
+    oContainer.onmouseout = function(){
+        run();
+    };
     function changeImg (elem) {
+        iNow=elem;//重要，始终使索引保持一致
         for(var i=0;i<aLi.length;i++) {
             aLi[i].className = ' ';
         }
-        aLi[elem == aLi.length?0:elem].className = 'selected';
+        aLi[iNow == aLi.length?0:iNow].className = 'selected';
         animate(oContent,{
-            left : - elem * iImgWidth
+            left : - iNow * iImgWidth
         });
     }
 </script>
