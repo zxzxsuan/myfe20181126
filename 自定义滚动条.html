@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+        #container{
+            width: 200px;
+            height: 200px;
+            background: indianred;
+            position: relative;
+            overflow: hidden;
+        }
+        #content{
+            width: 180px;
+            position: absolute;
+        }
+        #scroll_bar{
+            width: 20px;
+            background: gray;
+            height: 200px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        #scroll_btn{
+            width: 20px;
+            height: 20px;
+            background: #000;
+          /*  //float: right;*/
+            cursor: pointer;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="content">
+            哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈
+            哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈
+            哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈
+            哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈
+            哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈
+            哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈 哈哈哈哈
+        </div>
+        <div id="scroll_bar"><span id="scroll_btn"></span></div>
+    </div>
+    <script>
+        var oScroll_btn = document.getElementById('scroll_btn');
+        var oContainer = document.getElementById('container');
+        var oContent = document.getElementById('content');
+        var iDisY = 0;
+        oScroll_btn.onmousedown = function (e) {
+            e = e || window.event;
+        /*    iDisX = e.clientX;*/
+            iDisY = e.clientY - oContainer.offsetTop - oScroll_btn.offsetTop;
+            document.onmousemove = function(e){
+                e = e ||window.event;
+                var iTop = e.clientY - iDisY - oContainer.offsetTop;
+                if(iTop <= 0){
+                    iTop = 0;
+                }
+                if(iTop > oContainer.offsetHeight - oScroll_btn.offsetHeight){
+                    iTop = oContainer.offsetHeight - oScroll_btn.offsetHeight;
+                }
+                oScroll_btn.style.top = iTop + 'px';
+                oContent.style.top = -((iTop/(oContainer.offsetHeight - oScroll_btn.offsetHeight))*(oContent.offsetHeight-oContainer.offsetHeight)) + 'px';
+                return false;
+            };
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+        };
+    </script>
+</body>
+</html>
