@@ -44,6 +44,10 @@
     for(var i=0;i<aImg.length;i++){
         aImg[i].style.left = aImg[i].offsetLeft + 'px';
         aImg[i].style.top = aImg[i].offsetTop + 'px';
+        aImg[i].pos = {
+          left:aImg[i].offsetLeft,
+          top:aImg[i].offsetTop
+        };
     }
     for(var i=0;i<aImg.length;i++){
         aImg[i].style.position = 'absolute';
@@ -60,7 +64,7 @@
             iElemR=elem.offsetLeft+elem.offsetWidth,
             iElemT=elem.offsetTop,
             iElemB=elem.offsetTop+elem.offsetHeight;
-        if(iElemR<iTargetL||iElemT>iTargetB||iElemL>iTargetR||iElemB<iTargetT){
+        if((iElemR<iTargetL)||(iElemT>iTargetB)||(iElemL>iTargetR)||(iElemB<iTargetT)){
             return false;
         }
         return true;
@@ -68,12 +72,19 @@
     function getDis(elem,target) {//获取两个元素顶点之间的距离
         var iX = elem.offsetLeft - target.offsetLeft;
         var iY = elem.offsetTop - target.offsetTop;
-        return math.sqrt(iX*iX + iY*iY);
+        return Math.sqrt(iX*iX + iY*iY);
     }
     function getNearest(elem) {//获取离elem最近的元素
         var iMinDis = 999999;
         var iMinIndex = -1;
-        
+        for(var i=0;i<aCollide.length;i++){
+            var iDis=getDis(elem,aCollide[i]);
+            if(iDis<iMinDis){
+                iMinDis=iDis;
+                iMinIndex=i;
+            }
+        }
+        return aCollide[iMinIndex];
     }
     function drag(oElem){
         var iDisX = iDisY = 0;
@@ -82,6 +93,7 @@
             iDisX = e.clientX - oElem.offsetLeft;
             iDisY = e.clientY - oElem.offsetTop;
             document.onmousemove = function(e){
+                oElem.style.zIndex = iZindex++;
                 e = e || window.event;
                 var iLeft = e.clientX - iDisX;
                 var iTop = e.clientY - iDisY;
@@ -99,13 +111,29 @@
                         aCollide.push(aImg[i]);
                     }
                 }
+                oNearest = getNearest(oElem);
+                if(oNearest){
+                    oNearest.className = 'collide';
+                }
+                aCollide=[];
 
                 return false;
             };
             document.onmouseup = function () {
                 document.onmousemove = null;
                 document.onmouseup = null;
-            }
+                if(oNearest){
+                    animate(oElem,oNearest.pos);
+                    animate(oNearest,oElem.pos);
+                    var tempPos = oElem.pos;
+                    oElem.pos = oNearest.pos;
+                    oNearest.pos = tempPos;
+                }else{
+                    animate(oElem,oElem.pos);
+                }
+                aCollide = [];
+                oNearest.className = '';
+            };
         };
     }
 
