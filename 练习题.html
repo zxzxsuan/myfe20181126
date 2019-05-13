@@ -47,11 +47,31 @@
     }*/
 
    /*var i = 1;
-   for(var z=1;z<10;z++){
+   for(var z=1;z<=10;z++){
        i=i*z;
    }
    document.write(i);//10！*/
-   
+   /* function factorial(a) {
+        var i = 1;
+        for(var z=1;z<=a;z++){
+            i=i*z;
+        }
+        return i;
+    }
+    var sum= 0;
+
+    for(var z=1;z<=10;z++){
+
+        sum=factorial(z)+sum;
+    }
+    document.write(sum);*/
+    for(var i=1;i<=5;i++){
+        for(var lines=1;lines<=i;lines++){
+            document.write(lines+" ");
+
+        }
+        document.write("<br>");
+    }
 </script>
 </body>
 </html>
