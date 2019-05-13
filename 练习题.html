@@ -65,6 +65,7 @@
         sum=factorial(z)+sum;
     }
     document.write(sum);*/
+
     /*for(var i=1;i<=5;i++){
         for(var lines=1;lines<=i;lines++){
             document.write(lines+" ");
@@ -81,6 +82,7 @@
         }
         document.write("<br>");
     }*/
+
     /*求所有满足条件的四位数ABCD，
     它是13的倍数，且第3位数加上第2位数等于第4位数（即：A=B+C）。
     4321
@@ -94,11 +96,44 @@
             document.write(i+"<br>");
         }
     }*/
-    for(i = 100;i <= 999;i++){
+    /*for(i = 100;i <= 999;i++){
         if(i%4==2&&i%7==3&&i%9==5){
             document.write(i+"<br>");
         }
+    }*/
+
+   /* function  calculate(a){
+        x=4*Math.pow(a,2)+3*a+2;
+        return x;
     }
+    var x = parseInt(window.prompt("请输入一个数字0~6",0));
+    document.write(calculate(x));*/
+
+   /*function Min(x,y){
+       return x<y?x:y;
+   }
+    var x = parseInt(window.prompt("请输入一个数字x",0));
+    var y = parseInt(window.prompt("请输入一个数字y",0));
+    document.write(Min(x,y));*/
+
+   function divided() {
+       var arr = [];
+       for (var x = 1; x <= 1000; x++) {
+           if (x % 3 == 0 && x % 5 == 0 && x % 7 == 0) {
+               arr.push(x);
+           }
+       }
+       return arr;
+   }
+   var arr=divided();
+       for(var j=0;j<arr.length;j++){
+           document.write(arr[j]+"&nbsp;");
+            if((j+1)%6==0){
+                document.write("<br>");
+            }
+       }
+
+
 </script>
 </body>
 </html>
