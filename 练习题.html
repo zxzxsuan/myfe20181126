@@ -72,7 +72,7 @@
         }
         document.write("<br>");
     }*/
-    for(num=5;num>=1;num--){
+    /*for(num=5;num>=1;num--){
         for(x=1;x<=num;x++){
             document.write("&nbsp;");
         }
@@ -80,6 +80,24 @@
             document.write("* ");
         }
         document.write("<br>");
+    }*/
+    /*求所有满足条件的四位数ABCD，
+    它是13的倍数，且第3位数加上第2位数等于第4位数（即：A=B+C）。
+    4321
+    4：Math.floor(x/1000)
+    3:Math.floor(x/100)%10
+    2:Math.floor(x/10)%10
+    1:x%10
+    */
+   /* for(var i=1000;i<=9999;i++){
+        if(i%13 == 0&&Math.floor(i/1000)==Math.floor(i/100)%10+Math.floor(i/10)%10){
+            document.write(i+"<br>");
+        }
+    }*/
+    for(i = 100;i <= 999;i++){
+        if(i%4==2&&i%7==3&&i%9==5){
+            document.write(i+"<br>");
+        }
     }
 </script>
 </body>
