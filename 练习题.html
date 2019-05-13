@@ -65,10 +65,19 @@
         sum=factorial(z)+sum;
     }
     document.write(sum);*/
-    for(var i=1;i<=5;i++){
+    /*for(var i=1;i<=5;i++){
         for(var lines=1;lines<=i;lines++){
             document.write(lines+" ");
 
+        }
+        document.write("<br>");
+    }*/
+    for(num=5;num>=1;num--){
+        for(x=1;x<=num;x++){
+            document.write("&nbsp;");
+        }
+        for(y=5-num;y>=0;y--){
+            document.write("* ");
         }
         document.write("<br>");
     }
