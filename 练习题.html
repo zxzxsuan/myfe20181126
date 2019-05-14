@@ -167,7 +167,36 @@
     var result=factorial(12) - factorial(10);
     document.write(result);*/
 
-
+    /*斐波纳契（Fibonacci）数列的第一项是1，第二项是1，以后各项都是前两项的和。
+    试用递归函数和非递归函数各编写一个程序，求斐波纳契数列第N项的值.*/
+    function Fibonacci(x){ //递归
+        if(x==1 || x==2){
+            return 1;
+        }
+        return (Fibonacci(x-1) + Fibonacci(x-2));
+    }
+    document.write(Fibonacci(7));
+    function Fibonacci1(x){//非递归就要用循环
+        if(x==1||x==2){
+            return 1;
+        }
+        var n1=1,n2=2,sum;
+        for(var i=3;i<x;i++){
+            sum=n1+n2;
+            n1=n2;
+            n2=sum;
+        }
+        return sum;
+    }
+    document.write(Fibonacci1(7));
+    function Fibonacci2(x) {
+        var arr=[1,1];
+        for(var i=2;i<x;i++){
+            arr[i]=arr[i-1]+arr[i-2];
+        }
+        return (arr[x-1]);
+    }
+    document.write(Fibonacci2(7));
 </script>
 </body>
 </html>
