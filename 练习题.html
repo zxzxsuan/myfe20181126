@@ -51,7 +51,7 @@
        i=i*z;
    }
    document.write(i);//10！*/
-   /* function factorial(a) {
+   /* function factorial(a) {//非递归      递归：return num>0?num*factorial(num-1):1;
         var i = 1;
         for(var z=1;z<=a;z++){
             i=i*z;
@@ -116,7 +116,7 @@
     var y = parseInt(window.prompt("请输入一个数字y",0));
     document.write(Min(x,y));*/
 
-   function divided() {
+   /*function divided() {
        var arr = [];
        for (var x = 1; x <= 1000; x++) {
            if (x % 3 == 0 && x % 5 == 0 && x % 7 == 0) {
@@ -131,7 +131,41 @@
             if((j+1)%6==0){
                 document.write("<br>");
             }
+       }*/
+
+    /*function primeNumber(){
+        var result=[];
+        for(var i=100;i<=1000;i++){
+            var bFlag = true;
+            for(var j=2;j<i/2;j++){
+                if(i%j==0){
+                    bFlag=false;
+                    break;
+                }
+            }
+            if(bFlag){
+                result.push(i);
+            }
+        }
+        return result;
+    }
+    var arr = primeNumber();
+    for(var i=0;i<arr.length;i++){
+       document.write(arr[i]+"&nbsp;");
+       if((i+1)%6==0){
+           document.write("<br>");
        }
+    }*/
+
+   /* function factorial(x){
+        var result = 1;
+        for(var i=1;i<=x;i++){
+            result = result * i;
+        }
+        return result;
+    }
+    var result=factorial(12) - factorial(10);
+    document.write(result);*/
 
 
 </script>

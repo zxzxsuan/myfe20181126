@@ -95,16 +95,18 @@
         var aImg = oContent.getElementsByTagName('img');
         var oPrev = document.getElementById('prev');
         var oNext = document.getElementById('next');
+        var oContainer = document.getElementById('container');
         var iNow = 0;
         for(var i=0;i<aLi.length;i++) {
             aLi[i].index = i;
             aLi[i].onmouseover=function(){
+                iNow = this.index;
                 changeImg(this.index);
             };
         }
         oPrev.onclick = function() {
             iNow--;
-            iNow =(iNow+aLi.length)%aLi.length;
+            iNow =(iNow+aLi.length) % aLi.length;
             changeImg(iNow);
         };
         oNext.onclick = function() {
@@ -126,6 +128,14 @@
         oNext.onselectstart = function(){
             return false;
         };
+        var timer = setInterval(oNext.onclick,2000);
+        oContainer.onmouseover = function () {
+          clearInterval(timer);
+        };
+        oContainer.onmouseout = function () {
+            timer = setInterval(oNext.onclick,2000);
+        };
+
     </script>
 </body>
 </html>
