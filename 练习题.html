@@ -264,7 +264,7 @@
 
   /*定义一个函数test（n，m） n>1，m>n,返回n到m之间的所有回文数（回文数是正读和反读相同的数，如121,、1001）*/
     function test(n,m){
-        var arr = [];
+        /*var arr = [];
         for(var i=n;i<=m;i++){
             arr.push(i + "");//number->string
         }
@@ -272,6 +272,13 @@
             var testNum = arr[j].split("").reverse().join("");
             if(testNum==arr[j]){
                 console.log(arr[j]);
+            }
+        }*/
+        for(var i=n;i<=m;i++){
+            var nowNum = i+"";
+            var testNum = nowNum.split("").reverse().join("");
+            if(testNum == nowNum){
+                console.log(nowNum);
             }
         }
     }
