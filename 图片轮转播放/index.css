@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+img{
+    border: 0;
+}
+#container{
+    width: 570px;
+    height: 500px;
+    margin: 50px auto;
+}
+#big-img{
+    width: 570px;
+    height: 400px;
+}
+#big-img img{
+    width: 570px;
+    height: 400px;
+}
+#small-img{
+    width: 570px;
+    height: 100px;
+}
