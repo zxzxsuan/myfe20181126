@@ -16,16 +16,9 @@
 
     for(var i=0;i<aSmallPic.length;i++){
         aSmallPic[i].className = "small-opacity";
-        aSmallPic[i].index = i;
-        aSmallPic[i].onmouseover = function () {
-            iNow = this.index;
-            aSmallPic[iNow].className = "selected";
-        };
-        aSmallPic[i].onmouseout = function(){
-
-        };
     }
-        aSmallPic[iNow].className = "selected";
+    aSmallPic[iNow].className = "selected";
+
 
     oPrev.onmouseover = oNext.onmouseover = function(){
         animate(this,{opacity:100});
@@ -48,13 +41,40 @@
         }
         changeImg(iNow);
     };
+
+        for(var i=0;i<aSmallPic.length;i++){
+            aSmallPic[i].index = i;
+            aSmallPic[i].onmouseover = function () {
+                animate(this,{opacity:100});
+            };
+
+            aSmallPic[i].onmouseout = function(){
+                if(this.index != iNow){
+                    animate(this,{opacity:30});
+                }
+            };
+            aSmallPic[i].onclick = function(){
+                if(this.index != iNow){
+                    changeImg(this.index);
+                }
+            }
+        }
+
+
     function changeImg(index) {
+        iNow = index;
         aBigPic[index].style.opacity = 0;
         aBigPic[index].style.filter = "alpha(opacity = 0)";
         aBigPic[index].style.zIndex = zIndex++;
         animate(aBigPic[index],{opacity : 100});
         oPrev.style.zIndex = oNext.style.zIndex = oInfo.style.zIndex = zIndex++;
         oCurrentPage.innerHTML = index+1;
+        for(var i=0;i<aSmallPic.length;i++){
+            aSmallPic[i].style.opacity = 0.3;
+            aSmallPic[i].style.filter = "alpha(opacity = 30)";
+        }
+        aSmallPic[index].style.opacity = 1;
+        aSmallPic[index].style.filter = "alpha(opacity = 100)"
     }
 
 
