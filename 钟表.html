@@ -82,7 +82,7 @@
         html+="<li style='-webkit-transform: rotate("+ i*6 +"deg)'></li>";
     }
 
-    setInterval(function(){
+    function run(){
         oDial.innerHTML = html;
         var now = new Date(),
             second=now.getSeconds(),
@@ -91,7 +91,8 @@
         oHour.style.transform = "rotate("+ hour*30 +"deg)";
         oMinute.style.transform = "rotate("+ minute*6 +"deg)";
         oSecond.style.transform = "rotate("+ second*6 +"deg)";
-        }
-        ,1000);
+    }
+    run();
+    setInterval(run,1000);
 </script>
 </html>
