@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转立方体</title>
+    <style>
+        body{
+            background: #000;
+            perspective: 1000px;
+            position: relative;
+        }
+        #container{
+            width: 200px;
+            height: 200px;
+           /* background: red;*/
+            margin: 200px auto;
+            transform-style: preserve-3d;
+        }
+        .cube{
+            width: 200px;
+            height: 200px;
+            background: #ffffff;
+            opacity: 0.7;
+            border: 2px solid #000000;
+            font-size: 100px;
+            text-align: center;
+            line-height: 200px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            position: absolute;
+        }
+        .three{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        .six{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .five{
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        .two{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .four{
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .one{
+            transform: translateZ(100px);
+        }
+        @keyframes spin {
+            0%{
+                -webkit-transform: rotateY(0deg);
+                -moz-transform: rotateY(0deg);
+                -ms-transform: rotateY(0deg);
+                -o-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+            }
+            100%{
+                -webkit-transform: rotateY(360deg);
+                -moz-transform: rotateY(360deg);
+                -ms-transform: rotateY(360deg);
+                -o-transform: rotateY(360deg);
+                transform: rotateY(360deg);
+            }
+        }
+        #container:hover{
+            animation: spin 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="cube one">1</div>
+        <div class="cube two">2</div>
+        <div class="cube three">3</div>
+        <div class="cube four">4</div>
+        <div class="cube five">5</div>
+        <div class="cube six">6</div>
+    </div>
+
+
+</body>
+</html>
