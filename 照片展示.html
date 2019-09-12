@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片展示</title>
+    <style>
+        #container{
+            width: 650px;
+            height: 370px;
+            margin: 100px auto;
+            position: relative;
+
+        }
+        #container img{
+            border: 10px solid #ffffff;
+            box-shadow: 8px 8px 14px #000;
+            width: 650px;
+            height: 370px;
+            -webkit-transition: all 3s ease-in;
+            -moz-transition: all 3s ease-in;
+           /* -ms-transition: all 3s ease-in;*/
+            -o-transition: all 3s ease-in;
+            transition: all 3s ease-in;
+        }
+        #container img:first-child{
+            -webkit-transform: rotate(30deg);
+            -moz-transform: rotate(30deg);
+            -ms-transform: rotate(30deg);
+            -o-transform: rotate(30deg);
+            transform: rotate(30deg);
+            position: absolute;
+        }
+        #container img:last-child{
+            -webkit-transform: rotate(-20deg);
+            -moz-transform: rotate(-20deg);
+            -ms-transform: rotate(-20deg);
+            -o-transform: rotate(-20deg);
+            transform: rotate(-20deg);
+        }
+        #container img:hover{
+            z-index: 1;
+            -webkit-transform: scale(1.5);
+            -moz-transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -o-transform: scale(1.5);
+            transform: scale(1.5);
+            box-shadow: 15px 15px 20px #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <img src="img/cat.jpg" alt="">
+        <img src="img/cat2.jpg" alt="">
+    </div>
+</body>
+</html>
