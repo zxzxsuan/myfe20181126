@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3d轮播图</title>
+    <style>
+        #container{
+            width: 650px;
+            height: 370px;
+            position: relative;
+            margin: 100px auto;
+        }
+        #imgs{
+            perspective: 1000px;
+        }
+        #container img{
+            width: 650px;
+            height: 370px;
+            position: absolute;
+            opacity: 0;
+            transform: rotateX(180deg);
+            transform-origin: bottom;
+        }
+        #arrows span{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: #eeeeee;
+            border-radius:50%;
+            color: #ffffff;
+            -webkit-text-stroke: 1px #000000;
+            font-size: 50px;
+            text-align: center;
+            line-height: 50px;
+            top:50%;
+            margin-top: -25px;
+            -webkit-box-shadow: 10px 5px 10px 5px #000;
+            -moz-box-shadow: 10px 5px 10px 5px #000;
+            box-shadow: 10px 5px 10px 5px #000;
+            cursor: pointer;
+
+        }
+        #prev{
+            left:-100px;
+        }
+        #next{
+            right: -100px;
+        }
+        #imgs .show{
+            -webkit-animation: show 2s ease forwards ;
+            -o-animation: show 2s ease forwards ;
+            animation: show 2s ease forwards ;
+        }
+        #imgs .hide{
+            -webkit-animation: hide 1s ease forwards;
+            -o-animation: hide 1s ease forwards;
+            animation: hide 1s ease forwards;
+        }
+        @keyframes show {
+            from{
+                transform: rotateX(180deg);
+                opacity: 0;
+            }
+            to{
+                transform: rotateX(0deg);
+                opacity: 1;
+            }
+        }
+        @keyframes hide {
+            from{
+                transform: rotateX(0deg);
+                opacity: 1;
+            }
+            to{
+                transform: rotateX(-180deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="imgs">
+            <img src="img/御守.jpg" alt="" style="z-index: 4" class="show">
+            <img src="img/牛奶.jpg" alt="" style="z-index:3">
+            <img src="img/草莓.jpg" alt="" style="z-index: 2">
+            <img src="img/风铃.jpg" alt="" style="z-index: 1">
+        </div>
+        <div id="arrows" onselectstart="return false;">
+            <span id="prev">&lt;</span>
+            <span id="next">&gt;</span>
+       </div>
+    </div>
+
+
+    <script>
+        /*var oContainer = document.getElementById("container");*/
+        var oImgs = document.getElementById("imgs");
+        var aImg = oImgs.getElementsByTagName("img");
+        var oPrev = document.getElementById("prev");
+        var oNext = document.getElementById("next");
+        var iNow = 0;
+        oPrev.onclick = oNext.onclick =function(){
+            aImg[iNow].className = "hide";
+            if(this == oPrev){
+                iNow--;
+                if(iNow == -1){
+                    iNow = aImg.length - 1;
+                }
+                aImg[iNow].style.className = "show";
+            }else{
+                iNow++;
+                if(iNow == aImg.length){
+                    iNow = 0;
+                }
+                aImg[iNow].className = "show";
+            }
+        }
+    </script>
+</body>
+</html>
