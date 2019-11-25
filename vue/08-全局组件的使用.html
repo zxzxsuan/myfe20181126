@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .default{
+            display: inline-block;
+            line-height: 1;
+            white-space: nowrap;
+            cursor: pointer;
+            background:
+                    #fff;
+            background-color: rgb(255, 255, 255);
+            background-image: none;
+            border: 1px solid
+            #dcdfe6;
+            border-top-color: rgb(220, 223, 230);
+            border-right-color: rgb(220, 223, 230);
+            border-bottom-color: rgb(220, 223, 230);
+            border-left-color: rgb(220, 223, 230);
+            color: #606266;
+            -webkit-appearance: none;
+            text-align: center;
+            box-sizing: border-box;
+            outline: none;
+            margin: 0;
+            margin-left: 0px;
+            transition: .1s;
+            font-weight: 500;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        .primary{
+            background: #ff00ff;
+        }
+        .success{
+            background: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript">
+        Vue.component("Vbtn",{template:
+            /*slot是vue的插槽 内置组件slot作为承载分发内容的出口*/
+                '<button class="default" :class="type">' +
+                '<slot>' +
+                '</slot>' +
+                '</button>',
+                props:["type"]
+            });
+        var VContent = {
+            data(){
+                return{
+
+                }
+            },
+            template:'<div>this is content' +
+                '<Vbtn type="primary">主要按钮</Vbtn>' +
+                '<Vbtn type="success">成功按钮</Vbtn>' +
+                '</div>'
+        };
+        //1.声子
+        var App={
+          data(){
+              return{
+
+              }
+          },
+          components:{
+              VContent
+          },
+          template:'<div>' +
+              '<VContent></VContent>' +
+              '</div>'
+        };
+        new Vue({
+            el:"#app",
+            data(){
+                return{
+
+                }
+            },
+            components:{
+              App
+            },
+            template:'<App></App>'
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript">
+        Vue.component("MyLi",{
+            template:'<li>' +
+                '预留的第一个位置' +
+                '<slot name="two"></slot>' +
+                '预留的第二个位置' +
+                '<slot name="three"></slot>' +
+                '</li>'
+        });
+        var App={
+            template:'<div>' +
+                        '<ul>' +
+                            '<MyLi>' +
+                                '<h2 slot="two">这是第一个位置</h2>' +
+                                '<h3 slot="three">这是第二个位置</h3>' +
+                            '</MyLi>' +
+                        '</ul>' +
+                    '</div>'
+        };
+        new Vue({
+            el:"#app",
+            data(){
+                return{
+
+                }
+            },
+            components:{
+                App
+            },
+            template:'<App />'
+        });
+    </script>
+</body>
+</html>
