@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="text/javascript" src="vue.min.js"></script>
+    <script type="text/javascript" src="node_modules/vue-router/dist/vue-router.js"></script>
+    <script type="text/javascript" src="node_modules/axios/dist/axios.js"></script>
+    <script type="text/javascript">
+        var App={
+          template:'<div>' +
+              '<button @click="sendAjax">发送请求</button>' +//
+              '</div>',
+            methods:{
+                sendAjax(){
+                    this.$axios.get('/user')
+                                .then(res=>{console.log(res)})
+                                .catch(err=>{console.log(err)})//请求失败处理
+                }
+            }
+        };
+        Vue.prototype.$axios=axios;
+        new Vue({
+           el:"#app",
+           data(){
+               return{
+
+               }
+           } ,
+            components:{
+               App
+            },
+            template:'<App />'
+        });
+    </script>
+
+</body>
+</html>
